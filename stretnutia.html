@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elissa</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <nav>
+    <div style="display: flex; align-items: center; margin-left: 8px;">Elissa</div>
+    <ul>
+      <li><a href="./index.html">Domov</a></li>
+      <li><a href="tim.html">Tím</a></li>
+      <li><a href="">Stretnutia</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Zápisnice</h1>
+    
+    <!-- List of PDF files -->
+    <div class="pdf-list" id="pdf-list"></ddiv>
+
+  </main>
+
+  <script>
+    // Array of PDF files with names and paths
+    const pdfFiles = [
+      { name: "Zápisnica 01", path: "zapisy/zapisnica01.pdf", date: "2021-03-01" }, 
+    ];
+
+    const pdfList = document.getElementById('pdf-list');
+
+    // Loop through the array and create list items with download links
+    pdfFiles.forEach(file => {
+      const listItem = document.createElement('div');
+      listItem.innerHTML = `<a href="${file.path}" download>${file.name}</a><div style="color: white; margin-bottom:6px;">${file.date}</div>`;
+      pdfList.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>

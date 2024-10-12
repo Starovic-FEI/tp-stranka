@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elissa</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <nav>
+    <div style="display: flex; align-items: center; margin-left: 8px;">Elissa</div>
+    <ul>
+      <li><a href="./index.html">Domov</a></li>
+      <li><a href="">Tím</a></li>
+      <li><a href="stretnutia.html">Stretnutia</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Náš tím</h1>
+    <p>Náš kolektív pozostáva z absolventov bakalárskeho štúdia aplikovanej informatiky FEI STU, konkrétne z odvetví bezpečnosti informačných systémov a modelovania a simulácie udalostných systémov.</p>
+
+    <div class="team" id="team"></div>
+  </main>
+
+  <script>
+    const team = [
+      { name: "Radovan Križanovský", picture: "rado.jpg", description: "Lorem ipsum." },
+      { name: "Tomáš Starovič", picture: "staro.jpg", description: "Lorem ipsum." },
+      { name: "Rudolf Bezák", picture: "rudo.jpg", description: "Robil stránku 😇" },
+      { name: "Artur Andriichenko", picture: "antal.jpg", description: "Lorem ipsum." },
+      { name: "Andrej Király", picture: "antal.jpg", description: "Lorem ipsum." },
+    ];
+
+    const teamContainer = document.getElementById('team');
+
+    team.forEach(member => {
+      const memberDiv = document.createElement('div');
+      memberDiv.classList.add('team-member');
+
+      memberDiv.innerHTML = `
+        <img src="${member.picture}" alt="${member.name}" class="team-picture">
+        <h2>${member.name}</h2>
+        <p class="team-desc">${member.description}</p>
+      `;
+
+      teamContainer.appendChild(memberDiv);
+    });
+  </script>
+</body>
+</html>
