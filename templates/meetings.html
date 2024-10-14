@@ -4,29 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elisa</title>
-  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
   <nav>
     <div style="display: flex; align-items: center; margin-left: 8px;">Elisa</div>
     <ul>
-      <li><a href="./index.html">Domov</a></li>
-      <li><a href="team.html">Tím</a></li>
-      <li><a href="">Stretnutia</a></li>
+      <li><a href="{{ url_for('status') }}">Domov</a></li>
+      <li><a href="{{ url_for('team') }}">Tím</a></li>
+      <li><a href="{{ url_for('meetings') }}">Stretnutia</a></li>
     </ul>
   </nav>
   <main>
     <h1>Zápisnice</h1>
     
-
     <div class="pdf-list" id="pdf-list"></div>
   </main>
   <script>
-
+    
     const pdfFiles = [
       { name: "Zápisnica 01", path: "../static/meetings/zapisnica01.pdf", date: "2021-03-01" }, 
     ];
-
     const pdfList = document.getElementById('pdf-list');
 
     pdfFiles.forEach(file => {
