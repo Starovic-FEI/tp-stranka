@@ -1,48 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elisa</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-</head>
-<body>
-  <nav>
-    <div style="display: flex; align-items: center; margin-left: 8px;">Elisa</div>
-    <ul>
-      <li><a href="{{ url_for('status') }}">Domov</a></li>
-      <li><a href="{{ url_for('team') }}">Tím</a></li>
-      <li><a href="{{ url_for('meetings') }}">Stretnutia</a></li>
-    </ul>
-  </nav>
-  <main>
-    <h1>Zápisnice</h1>
-    
-    <div class="pdf-list" id="pdf-list"></div>
-  </main>
-  <script>
-    
-    const pdfFiles = [
-      { name: "1.Zápisnica - 02.10.2024", path: "{{ url_for('static', filename='meetings/1.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "2.Zápisnica - 09.10.2024", path: "{{ url_for('static', filename='meetings/2.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "3.Zápisnica - 16.10.2024", path: "{{ url_for('static', filename='meetings/3.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "4.Zápisnica - 23.10.2024", path: "{{ url_for('static', filename='meetings/4.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "5.Zápisnica - 30.10.2024", path: "{{ url_for('static', filename='meetings/5.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "6.Zápisnica - 06.11.2024", path: "{{ url_for('static', filename='meetings/6.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "7.Zápisnica - 13.11.2024", path: "{{ url_for('static', filename='meetings/7.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "8.Zápisnica - 20.11.2024", path: "{{ url_for('static', filename='meetings/8.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "9.Zápisnica - 27.11.2024", path: "{{ url_for('static', filename='meetings/9.Zápisnica tímového stretnutia.pdf') }}" },
-      { name: "10.Zápisnica - 11.12.2024", path: "{{ url_for('static', filename='meetings/10.Zápisnica tímového stretnutia.pdf') }}" },
-      
-      
-    ];
-    const pdfList = document.getElementById('pdf-list');
 
-    pdfFiles.forEach(file => {
-      const listItem = document.createElement('div');
-      listItem.innerHTML = `<a href="${file.path}" download>${file.name}</a>`;
-      pdfList.appendChild(listItem);
-    });
-  </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zápisnice z tímových stretnutí</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="https://gitlab.com/elisa11" target="_blank">
+                <img src="{{ url_for('static', filename='images/elisa_logo.png') }}" alt="Elisa Logo"
+                    class="navbar-logo me-2">
+                <span>Elisa (GitLab)</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-3"><a class="nav-link {% if request.path == '/' %}active{% endif %}"
+                            href="{{ url_for('status') }}">O projekte</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link {% if request.path == '/team' %}active{% endif %}"
+                            href="{{ url_for('team') }}">Tím</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link {% if request.path == '/meetings' %}active{% endif %}"
+                            href="{{ url_for('meetings') }}">Stretnutia</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="main-content">
+            <h1>Zápisnice z tímových stretnutí</h1>
+
+            <div class="meetings-info">
+                <div class="meetings-info-box">
+                    <h2>Zimný semester</h2>
+                    <ul class="meeting-list">
+                        <li><a href="{{ url_for('static', filename='meetings/1.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">02.10.2024 - 1.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/2.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">09.10.2024 - 2.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/3.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">16.10.2024 - 3.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/4.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">23.10.2024 - 4.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/5.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">30.10.2024 - 5.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/6.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">06.11.2024 - 6.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/7.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">13.11.2024 - 7.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/8.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">20.11.2024 - 8.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/9.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">27.11.2024 - 9.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                        <li><a href="{{ url_for('static', filename='meetings/10.Zápisnica tímového stretnutia.pdf') }}"
+                                target="_blank">11.12.2024 - 10.Zápisnica &nbsp;<i class="fa-solid fa-file-pdf"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="meetings-info-box">
+                    <h2>Letný semester</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container-fluid justify-content-center">
+            <span class="navbar-text">FEI STU 2024/2025</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
