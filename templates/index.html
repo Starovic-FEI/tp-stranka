@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O projekte</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navbar -->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center fs-4" href="https://gitlab.com/elisa11" target="_blank">
-                <img src="{{ url_for('static', filename='images/elisa_logo_transparent.png') }}" alt="Elisa Logo"
+            <a class="navbar-brand d-flex align-items-center" href="https://gitlab.com/elisa11" target="_blank">
+                <img src="{{ url_for('static', filename='images/elisa_logo.png') }}" alt="Elisa Logo"
                     class="navbar-logo me-2">
                 <span>Elisa (GitLab)</span>
             </a>
@@ -24,7 +24,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto fs-5">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-3"><a class="nav-link {% if request.path == '/' %}active{% endif %}"
                             href="{{ url_for('status') }}">O projekte</a></li>
                     <li class="nav-item mx-3"><a class="nav-link {% if request.path == '/team' %}active{% endif %}"
@@ -36,13 +36,11 @@
         </div>
     </nav>
 
-    <!-- Main Section -->
     <div class="main">
         <div class="main-content">
             <h1>Rozvrhový systém v prostredí Python Django</h1>
-            <h3>Ideálne riešenie pre generovanie rozvrhov</h3>
+            <h4>Ideálne riešenie pre generovanie rozvrhov</h4>
 
-            <!-- Project Info -->
             <div class="project-info">
                 <div class="project-info-box">
                     <h2>O projekte</h2>
@@ -55,13 +53,12 @@
                         ktoré bude môcť rozvrhár kedykoľvek modifikovať, resp. vytvárať.
                     </p>
                 </div>
-                <img src="{{ url_for('static', filename='images/elisa_logo_transparent.png') }}" alt="Elisa Logo"
-                    class="main-logo">
 
-                <!-- Leader Info -->
-                <div class="leader-info">
+                <img src="{{ url_for('static', filename='images/elisa_logo.png') }}" alt="Elisa Logo" class="main-logo">
+
+                <div class="leaders-info">
                     <h2>Zadávatelia projektu</h2>
-                    <div class="leader-info-box">
+                    <div class="leaders-info-box">
                         <a href="https://is.stuba.sk/lide/clovek.pl?id=10139" target="_blank" class="leader-link">
                             <div class="leader-info-card">
                                 <div class="icon"><i class="fa-solid fa-user-graduate"></i></div>
@@ -88,6 +85,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
